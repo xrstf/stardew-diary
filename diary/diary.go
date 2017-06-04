@@ -70,7 +70,8 @@ func (d *Diary) History() (entries []Entry, err error) {
 		return
 	}
 
-	differ := NewDiffer()
+	historian := NewHistorian()
+	historian.AddAllWorkers()
 
 	var previous *sdv.SaveGame
 	var current *sdv.SaveGame
@@ -91,8 +92,8 @@ func (d *Diary) History() (entries []Entry, err error) {
 			next, _ = entries[i-1].SaveGame()
 		}
 
-		// always call differ, for its possible side effect
-		changes := differ.Diff(previous, current, next)
+		// always call historian, for its possible side effect
+		changes := historian.History(previous, current, next)
 
 		if previous != nil {
 			entries[i+1].Changes = changes
