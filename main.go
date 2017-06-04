@@ -25,6 +25,12 @@ func main() {
 			ArgsUsage: "SAVEGAME",
 		},
 		cli.Command{
+			Name:      "history",
+			Usage:     "Prints a nice list of achievements and general changes.",
+			Action:    historyCommand,
+			ArgsUsage: "SAVEGAME",
+		},
+		cli.Command{
 			Name:      "revert",
 			Usage:     "Reverts a savegame back to a specific date in the past.",
 			Action:    revertCommand,

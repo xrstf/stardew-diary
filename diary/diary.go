@@ -64,6 +64,46 @@ func (d *Diary) Entry(entryID string) (Entry, error) {
 	return entries[0], nil
 }
 
+func (d *Diary) History() (entries []Entry, err error) {
+	entries, err = d.Entries()
+	if err != nil {
+		return
+	}
+
+	differ := NewDiffer()
+
+	var previous *sdv.SaveGame
+	var current *sdv.SaveGame
+	var next *sdv.SaveGame
+
+	for i := len(entries) - 1; i >= 0; i-- {
+		entry := entries[i]
+
+		if next != nil {
+			current = next
+		} else {
+			current, _ = entry.SaveGame()
+		}
+
+		next = nil
+
+		if i > 0 {
+			next, _ = entries[i-1].SaveGame()
+		}
+
+		// always call differ, for its possible side effect
+		changes := differ.Diff(previous, current, next)
+
+		if previous != nil {
+			entries[i+1].Changes = changes
+		}
+
+		previous = current
+	}
+
+	return
+}
+
 func (d *Diary) parseEntries(output string) []Entry {
 	dateRegexp := regexp.MustCompile(`^=== (\d\d\d\d-\d\d-\d\d) ===$`)
 	entryRegexp := regexp.MustCompile(`^(\d\d:\d\d:\d\d) \[([a-f0-9]+)\] (\*([A-Z]+)\* )?(\d\d\d\d-\d-\d\d) \((.+?)\)$`)

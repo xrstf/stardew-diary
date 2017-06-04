@@ -16,6 +16,7 @@ type Entry struct {
 	IngameDate sdv.Date
 	Special    string
 	Properties string
+	Changes    []string
 }
 
 func (e *Entry) SaveGame() (savegame *sdv.SaveGame, err error) {
