@@ -22,7 +22,11 @@ func (d *Historian) AddAllWorkers() {
 		d.differs,
 		&differ.FirstDay{},
 		&differ.PetAdoption{},
-		&differ.MoneyBottomLine{},
+		// &differ.MoneyBottomLine{},
+		&differ.SkillLevel{},
+		&differ.BridgeFixed{},
+		&differ.LostBooks{},
+		&differ.BambooPole{},
 	)
 }
 

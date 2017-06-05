@@ -11,6 +11,8 @@ type PetAdoption struct{}
 
 func (d *PetAdoption) Diff(previous, current, next *sdv.SaveGame, out Yielder) {
 	if pet := current.Pet(); pet != nil {
-		out(fmt.Sprintf("I've adopted a %s and named it %s!", strings.ToLower(pet.Type), pet.Name))
+		if previous == nil || previous.Pet() == nil {
+			out(fmt.Sprintf("I've adopted a %s and named it %s!", strings.ToLower(pet.Type), pet.Name))
+		}
 	}
 }

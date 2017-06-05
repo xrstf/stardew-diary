@@ -34,7 +34,7 @@ func watchCommand(ctx *cli.Context) {
 
 		switch event.Kind {
 		case "created":
-			log.Printf("Found new savegame %s.", savegame)
+			log.Printf("Detected savegame %s.", savegame)
 			diary.Record()
 
 		case "changed":

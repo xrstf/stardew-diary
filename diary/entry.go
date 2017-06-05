@@ -1,8 +1,11 @@
 package diary
 
 import (
+	"fmt"
 	"io"
+	"os"
 	"os/exec"
+	"path/filepath"
 
 	"github.com/xrstf/stardew-diary/sdv"
 )
@@ -35,6 +38,34 @@ func (e *Entry) SaveGameInfo() (info *sdv.SaveGameInfo, err error) {
 	})
 
 	return
+}
+
+func (e *Entry) Dump() error {
+	dir := e.diary.directory
+	suffix := fmt.Sprintf("-%04d-%s.xml", e.Number, e.ID)
+
+	for _, file := range []string{e.diary.saveGameID, "SaveGameInfo"} {
+		err := e.pipeFile(addExt(file, "xml"), func(input io.Reader) error {
+			out, err := os.Create(filepath.Join(dir, file+suffix))
+			if err != nil {
+				return err
+			}
+			defer out.Close()
+
+			_, err = io.Copy(out, input)
+			if err != nil {
+				return err
+			}
+
+			return nil
+		})
+
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 type fossilConsumer func(io.Reader) error

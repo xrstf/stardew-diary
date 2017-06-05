@@ -12,12 +12,10 @@ func (d *MoneyBottomLine) Diff(previous, current, next *sdv.SaveGame, out Yielde
 	moneyDiff := 0
 
 	if previous != nil {
-		moneyDiff = current.Player.Money - previous.Player.Money
+		moneyDiff = current.Player.TotalMoneyEarned - previous.Player.TotalMoneyEarned
 	}
 
 	if moneyDiff > 0 {
-		out(fmt.Sprintf("I earned %d gold.", moneyDiff))
-	} else if moneyDiff < 0 {
-		out(fmt.Sprintf("I lost %d gold.", -moneyDiff))
+		out(fmt.Sprintf("I earned %d gold today.", moneyDiff))
 	}
 }

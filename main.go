@@ -36,6 +36,12 @@ func main() {
 			Action:    revertCommand,
 			ArgsUsage: "SAVEGAME REVISION",
 		},
+		cli.Command{
+			Name:      "dump",
+			Usage:     "Dumps a given diary revision to disk for further debugging.",
+			Action:    dumpCommand,
+			ArgsUsage: "SAVEGAME REVISION[, ...]",
+		},
 	}
 
 	app.Run(os.Args)
