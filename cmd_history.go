@@ -5,6 +5,7 @@ import (
 	"log"
 	"strings"
 
+	wordwrap "github.com/mitchellh/go-wordwrap"
 	"github.com/xrstf/stardew-diary/diary"
 	"github.com/xrstf/stardew-diary/sdv"
 
@@ -54,7 +55,7 @@ func historyCommand(ctx *cli.Context) {
 		log.Fatalln(err)
 	}
 
-	for _, entry := range entries[1:] {
+	for entry := range entries {
 		fmt.Printf("  %s\n", entry.IngameDate.String())
 
 		if len(entry.Changes) == 0 {
@@ -63,10 +64,28 @@ func historyCommand(ctx *cli.Context) {
 			fmt.Println("")
 
 			for _, change := range entry.Changes {
-				fmt.Printf("   - %s\n", change)
+				fmt.Printf(itemize(change, 3))
 			}
 
 			fmt.Println("")
 		}
 	}
+}
+
+func itemize(change string, leading int) string {
+	wrapped := wordwrap.WrapString(change, 60)
+	lines := strings.Split(wrapped, "\n")
+	prefix := strings.Repeat(" ", leading)
+
+	output := make([]string, len(lines))
+
+	for idx, line := range lines {
+		if idx == 0 {
+			output[idx] = prefix + "- " + line
+		} else {
+			output[idx] = prefix + "  " + line
+		}
+	}
+
+	return strings.Join(output, "\n") + "\n"
 }

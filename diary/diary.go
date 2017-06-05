@@ -64,45 +64,52 @@ func (d *Diary) Entry(entryID string) (Entry, error) {
 	return entries[0], nil
 }
 
-func (d *Diary) History() (entries []Entry, err error) {
-	entries, err = d.Entries()
+func (d *Diary) History() (<-chan Entry, error) {
+	output := make(chan Entry)
+
+	entries, err := d.Entries()
 	if err != nil {
-		return
+		return output, err
 	}
 
 	historian := NewHistorian()
 	historian.AddAllWorkers()
 
-	var previous *sdv.SaveGame
-	var current *sdv.SaveGame
-	var next *sdv.SaveGame
+	go func() {
+		var previous *sdv.SaveGame
+		var current *sdv.SaveGame
+		var next *sdv.SaveGame
 
-	for i := len(entries) - 1; i >= 0; i-- {
-		entry := entries[i]
+		for i := len(entries) - 1; i >= 0; i-- {
+			entry := entries[i]
 
-		if next != nil {
-			current = next
-		} else {
-			current, _ = entry.SaveGame()
+			if next != nil {
+				current = next
+			} else {
+				current, _ = entry.SaveGame()
+			}
+
+			next = nil
+
+			if i > 0 {
+				next, _ = entries[i-1].SaveGame()
+			}
+
+			// always call historian, for its possible side effect
+			changes := historian.History(previous, current, next)
+
+			if previous != nil {
+				entries[i+1].Changes = changes
+				output <- entries[i+1]
+			}
+
+			previous = current
 		}
 
-		next = nil
+		close(output)
+	}()
 
-		if i > 0 {
-			next, _ = entries[i-1].SaveGame()
-		}
-
-		// always call historian, for its possible side effect
-		changes := historian.History(previous, current, next)
-
-		if previous != nil {
-			entries[i+1].Changes = changes
-		}
-
-		previous = current
-	}
-
-	return
+	return output, err
 }
 
 func (d *Diary) parseEntries(output string) []Entry {
