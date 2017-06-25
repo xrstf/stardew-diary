@@ -27,6 +27,7 @@ func (d *Historian) AddAllWorkers() {
 		&differ.BridgeFixed{},
 		&differ.LostBooks{},
 		&differ.BambooPole{},
+		&differ.MuseumAchievement{},
 	)
 }
 

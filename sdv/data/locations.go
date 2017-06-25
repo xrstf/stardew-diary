@@ -2,7 +2,7 @@
 
 package data
 
-var locations = []Location{
+var Locations = []Location{
 	Location{ID: "Backwoods", Name: "Backwoods", Prefix: "at the"},
 	Location{ID: "Bus_Stop", Name: "Bus Stop", Prefix: "at the"},
 	Location{ID: "The_Desert", Name: "Calico Desert", Prefix: "at"},

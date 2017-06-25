@@ -81,7 +81,7 @@ func writeLocations() {
 	f.WriteString("\n")
 	f.WriteString("package data\n")
 	f.WriteString("\n")
-	f.WriteString("var locations = []Location{\n")
+	f.WriteString("var Locations = []Location{\n")
 
 	for _, loc := range locations {
 		f.WriteString(fmt.Sprintf("\tLocation{ID: %#v, Name: %#v, Prefix: %#v},\n", loc.ID, loc.Name, loc.Prefix))

@@ -45,6 +45,15 @@ type SGGameLocation struct {
 
 	// type=Beach
 	BridgeFixed bool `xml:"bridgeFixed"`
+
+	// type=LibraryMuseum
+	MuseumPieces struct {
+		Items []struct {
+			Value struct {
+				ItemID int `xml:"int"`
+			} `xml:"value"`
+		} `xml:"item"`
+	} `xml:"museumPieces"`
 }
 
 type SaveGame struct {
@@ -140,6 +149,10 @@ func (s *SaveGame) Location(name string) *SGGameLocation {
 
 func (s *SaveGame) Beach() *SGGameLocation {
 	return s.Location("Beach")
+}
+
+func (s *SaveGame) LibraryMuseum() *SGGameLocation {
+	return s.Location("LibraryMuseum")
 }
 
 func (s *SaveGame) Item(name string) *SGItem {
