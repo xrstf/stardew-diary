@@ -6,3 +6,6 @@ build: fix
 fix: *.go
 	goimports -l -w .
 	gofmt -l -w .
+
+data:
+	cd sdv/data/src && go run main.go

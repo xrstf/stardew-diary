@@ -1,0 +1,59 @@
+- id: Backwoods
+  prefix: at the
+  name: Backwoods
+
+- id: Bus_Stop
+  prefix: at the
+  name: Bus Stop
+
+- id: The_Desert
+  prefix: at
+  name: Calico Desert
+
+- id: Cindersap_Forest
+  prefix: at
+  name: Cindersap Forest
+
+- id: Pelican_Town
+  prefix: in
+  name: Pelican Town
+
+- id: Railroad
+  prefix: at the
+  name: Railroad Station
+
+- id: Secret_Woods
+  prefix: in the
+  name: Secret Woods
+
+- id: The_Beach
+  prefix: at the
+  name: Beach
+
+- id: The_Farm
+  prefix: on the
+  name: Farm
+
+- id: The_Mines
+  prefix: in the
+  name: Mines
+
+- id: The_Mountain
+  prefix: at the
+  name: Mountain
+
+- id: The_Sewers
+  prefix: in the
+  name: Sewers
+
+- id: The_Tunnel
+  prefix: in the
+  name: Tunnel
+
+- id: Skull_Cavern
+  prefix: in the
+  name: Skull Cavern
+
+- id: Slime_Hutch
+  prefix: in the
+  name: Slime Hutch

@@ -1,0 +1,379 @@
+- id: 96
+  singular: 'Dwarf Scroll I'
+  plural: 'Dwarf Scrolls I'
+
+- id: 97
+  singular: 'Dwarf Scroll II'
+  plural: 'Dwarf Scrolls II'
+
+- id: 98
+  singular: 'Dwarf Scroll III'
+  plural: 'Dwarf Scrolls III'
+
+- id: 99
+  singular: 'Dwarf Scroll IV'
+  plural: 'Dwarf Scrolls IV'
+
+- id: 100
+  singular: 'Chipped Amphora'
+  plural: 'Chipped Amphorae'
+
+- id: 101
+  singular: Arrowhead
+  plural: Arrowheads
+
+- id: 103
+  singular: 'Ancient Doll'
+  plural: 'Ancient Dolls'
+
+- id: 104
+  singular: 'Elvish Jewelry'
+  plural: 'Elvish Jewelry'
+
+- id: 105
+  singular: 'Chewing Stick'
+  plural: 'Chewing Sticks'
+
+- id: 106
+  singular: 'Ornamental Fan'
+  plural: 'Ornamental Fans'
+
+- id: 107
+  singular: 'Dinosaur Egg'
+  plural: 'Dinosaur Eggs'
+
+- id: 108
+  singular: 'Rare Disc'
+  plural: 'Rare Discs'
+
+- id: 109
+  singular: 'Ancient Sword'
+  plural: 'Ancient Swords'
+
+- id: 110
+  singular: 'Rusty Spoon'
+  plural: 'Rusty Spoons'
+
+- id: 111
+  singular: 'Rusty Spur'
+  plural: 'Rusty Spurs'
+
+- id: 112
+  singular: 'Rusty Cog'
+  plural: 'Rusty Cogs'
+
+- id: 113
+  singular: 'Chicken Statue'
+  plural: 'Chicken Statues'
+
+- id: 114
+  singular: 'Ancient Seed'
+  plural: 'Ancient Seeds'
+
+- id: 115
+  singular: 'Prehistoric Tool'
+  plural: 'Prehistoric Tools'
+
+- id: 116
+  singular: 'Dried Starfish'
+  plural: 'Dried Starfish'
+
+- id: 117
+  singular: Anchor
+  plural: Anchors
+
+- id: 118
+  singular: 'Glass Shards'
+  plural: 'Glass Shards'
+
+- id: 119
+  singular: 'Bone Flute'
+  plural: 'Bone Flutes'
+
+- id: 120
+  singular: 'Prehistoric Handaxe'
+  plural: 'Prehistoric Handaxes'
+
+- id: 121
+  singular: 'Dwarvish Helm'
+  plural: 'Dwarvish Helms'
+
+- id: 122
+  singular: 'Dwarf Gadget'
+  plural: 'Dwarf Gadgets'
+
+- id: 123
+  singular: 'Ancient Drum'
+  plural: 'Ancient Drums'
+
+- id: 124
+  singular: 'Golden Mask'
+  plural: 'Golden Masks'
+
+- id: 125
+  singular: 'Golden Relic'
+  plural: 'Golden Relics'
+
+- id: 126
+  singular: 'Strange Doll (green)'
+  plural: 'Strange Dolls (green)'
+
+- id: 127
+  singular: 'Strange Doll (yellow)'
+  plural: 'Strange Dolls (yellow)'
+
+- id: 579
+  singular: 'Prehistoric Scapula'
+  plural: 'Prehistoric Scapulas'
+
+- id: 580
+  singular: 'Prehistoric Tibia'
+  plural: 'Prehistoric Tibias'
+
+- id: 581
+  singular: 'Prehistoric Skull'
+  plural: 'Prehistoric Skulls'
+
+- id: 582
+  singular: 'Skeletal Hand'
+  plural: 'Skeletal Hands'
+
+- id: 583
+  singular: 'Prehistoric Rib'
+  plural: 'Prehistoric Ribs'
+
+- id: 584
+  singular: 'Prehistoric Vertebra'
+  plural: 'Prehistoric Vertebras'
+
+- id: 585
+  singular: 'Skeletal Tail'
+  plural: 'Skeletal Tails'
+
+- id: 586
+  singular: 'Nautilus Fossil'
+  plural: 'Nautilus Fossils'
+
+- id: 587
+  singular: 'Amphibian Fossil'
+  plural: 'Amphibian Fossils'
+
+- id: 588
+  singular: 'Palm Fossil'
+  plural: 'Palm Fossils'
+
+- id: 589
+  singular: Trilobite
+  plural: Trilobites
+
+- id: 60
+  singular: Emerald
+  plural: Emeralds
+
+- id: 62
+  singular: Aquamarine
+  plural: Aquamarines
+
+- id: 64
+  singular: Ruby
+  plural: Rubys
+
+- id: 66
+  singular: Amethyst
+  plural: Amethysts
+
+- id: 68
+  singular: Topaz
+  plural: Topaz
+
+- id: 70
+  singular: Jade
+  plural: Jades
+
+- id: 72
+  singular: Diamond
+  plural: Diamonds
+
+- id: 74
+  singular: 'Prismatic Shard'
+  plural: 'Prismatic Shards'
+
+- id: 80
+  singular: Quartz
+  plural: Quartz
+
+- id: 86
+  singular: 'Earth Crystal'
+  plural: 'Earth Crystals'
+
+- id: 84
+  singular: 'Frozen Tear'
+  plural: 'Frozen Tears'
+
+- id: 82
+  singular: 'Fire Quartz'
+  plural: 'Fire Quartz'
+
+- id: 562
+  singular: Tigerseye
+  plural: Tigerseyes
+
+- id: 564
+  singular: Opal
+  plural: Opals
+
+- id: 565
+  singular: 'Fire Opal'
+  plural: 'Fire Opals'
+
+- id: 538
+  singular: Alamite
+  plural: Alamite
+
+- id: 539
+  singular: Bixite
+  plural: Bixite
+
+- id: 540
+  singular: Baryte
+  plural: Baryte
+
+- id: 541
+  singular: Aerinite
+  plural: Aerinite
+
+- id: 542
+  singular: Calcite
+  plural: Calcite
+
+- id: 543
+  singular: Dolomite
+  plural: Dolomite
+
+- id: 544
+  singular: Esperite
+  plural: Esperite
+
+- id: 545
+  singular: Fluorapatite
+  plural: Fluorapatite
+
+- id: 546
+  singular: Geminite
+  plural: Geminite
+
+- id: 547
+  singular: Helvite
+  plural: Helvite
+
+- id: 548
+  singular: Jamborite
+  plural: Jamborite
+
+- id: 549
+  singular: Jagoite
+  plural: Jagoite
+
+- id: 550
+  singular: Kyanite
+  plural: Kyanite
+
+- id: 551
+  singular: Lunarite
+  plural: Lunarite
+
+- id: 552
+  singular: Malachite
+  plural: Malachite
+
+- id: 553
+  singular: Neptunite
+  plural: Neptunite
+
+- id: 554
+  singular: 'Lemon Stone'
+  plural: 'Lemon Stones'
+
+- id: 555
+  singular: Nekoite
+  plural: Nekoite
+
+- id: 556
+  singular: Orpiment
+  plural: Orpiment
+
+- id: 557
+  singular: 'Petrified Slime'
+  plural: 'Petrified Slimes'
+
+- id: 558
+  singular: 'Thunder Egg'
+  plural: 'Thunder Eggs'
+
+- id: 559
+  singular: Pyrite
+  plural: Pyrite
+
+- id: 560
+  singular: 'Ocean Stone'
+  plural: 'Ocean Stones'
+
+- id: 561
+  singular: 'Ghost Crystal'
+  plural: 'Ghost Crystals'
+
+- id: 563
+  singular: Jasper
+  plural: Jasper
+
+- id: 566
+  singular: Celestine
+  plural: Celestine
+
+- id: 567
+  singular: Marble
+  plural: Marbles
+
+- id: 568
+  singular: Sandstone
+  plural: Sandstones
+
+- id: 569
+  singular: Granite
+  plural: Granite
+
+- id: 570
+  singular: Basalt
+  plural: Basalt
+
+- id: 571
+  singular: Limestone
+  plural: Limestones
+
+- id: 572
+  singular: Soapstone
+  plural: Soapstones
+
+- id: 573
+  singular: Hematite
+  plural: Hematite
+
+- id: 574
+  singular: Mudstone
+  plural: Mudstones
+
+- id: 575
+  singular: Obsidian
+  plural: Obsidian
+
+- id: 576
+  singular: Slate
+  plural: Slates
+
+- id: 577
+  singular: 'Fairy Stone'
+  plural: 'Fairy Stones'
+
+- id: 578
+  singular: 'Star Shards'
+  plural: 'Star Shards'
