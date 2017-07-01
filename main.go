@@ -14,6 +14,11 @@ func main() {
 
 	app.Commands = []cli.Command{
 		cli.Command{
+			Name:   "savegames",
+			Usage:  "Prints a list of known savegames.",
+			Action: savegamesCommand,
+		},
+		cli.Command{
 			Name:   "watch",
 			Usage:  "Watches savegames for changes. Let this run in the background while you are playing.",
 			Action: watchCommand,

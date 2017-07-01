@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
+	"sort"
 	"time"
 )
 
@@ -38,11 +40,18 @@ func (g *Game) SaveGameIDs() []string {
 		return ids
 	}
 
+	regex := regexp.MustCompile(`^.+_[0-9]+$`)
+
 	for _, file := range files {
 		if file.IsDir() {
-			ids = append(ids, file.Name())
+			name := file.Name()
+			if regex.MatchString(name) {
+				ids = append(ids, name)
+			}
 		}
 	}
+
+	sort.Strings(ids)
 
 	return ids
 }

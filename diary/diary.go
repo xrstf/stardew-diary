@@ -20,10 +20,6 @@ type Diary struct {
 	saveGameID string
 }
 
-func diaryFilename(saveGameID string) string {
-	return addExt(strings.ToLower(saveGameID), "diary")
-}
-
 func NewDiary(storageDirectory string, game *sdv.Game, saveGameID string) (*Diary, error) {
 	repo := filepath.Join(storageDirectory, diaryFilename(saveGameID))
 	diary := &Diary{
