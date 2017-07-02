@@ -32,18 +32,29 @@ func NewDiary(storageDirectory string, game *sdv.Game, saveGameID string) (*Diar
 	os.MkdirAll(storageDirectory, 0755)
 
 	diary.fossil("init", repo)
-	diary.fossil("open", repo, "--keep")
+
+	if _, err := os.Stat(diary.directory); err == nil {
+		diary.fossil("open", repo, "--keep")
+	}
 
 	return diary, nil
 }
 
-func (d *Diary) Entries() ([]Entry, error) {
-	output, err := d.fossil("timeline", "ancestors", "tip", "--limit", "0", "--width", "0")
+func (d *Diary) LatestEntry() (*Entry, error) {
+	output, err := d.findEntries("1", true)
 	if err != nil {
 		return nil, err
 	}
 
-	return d.parseEntries(output), nil
+	if len(output) == 0 {
+		return nil, nil
+	}
+
+	return &output[0], nil
+}
+
+func (d *Diary) Entries() ([]Entry, error) {
+	return d.findEntries("0", false)
 }
 
 func (d *Diary) Entry(entryID string) (Entry, error) {
@@ -106,6 +117,21 @@ func (d *Diary) History() (<-chan Entry, error) {
 	}()
 
 	return output, err
+}
+
+func (d *Diary) findEntries(limit string, offline bool) ([]Entry, error) {
+	args := []string{"timeline", "ancestors", "tip", "--limit", limit, "--width", "0"}
+
+	if offline {
+		args = append(args, "-R", d.repo)
+	}
+
+	output, err := d.fossil(args...)
+	if err != nil {
+		return nil, err
+	}
+
+	return d.parseEntries(output), nil
 }
 
 func (d *Diary) parseEntries(output string) []Entry {
@@ -196,7 +222,10 @@ func (d *Diary) Revert(entryID string) error {
 
 func (d *Diary) fossil(args ...string) (string, error) {
 	c := exec.Command("fossil.exe", args...)
-	c.Dir = d.directory
+
+	if _, err := os.Stat(d.directory); err == nil {
+		c.Dir = d.directory
+	}
 
 	out, err := c.CombinedOutput()
 

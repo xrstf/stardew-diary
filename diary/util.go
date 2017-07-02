@@ -12,7 +12,7 @@ func addExt(filename string, ext string) string {
 }
 
 func diaryFilename(saveGameID string) string {
-	return addExt(strings.ToLower(saveGameID), "diary")
+	return addExt(saveGameID, "diary")
 }
 
 func DiaryIDs(storageDirectory string) ([]string, error) {

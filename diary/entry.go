@@ -71,8 +71,7 @@ func (e *Entry) Dump() error {
 type fossilConsumer func(io.Reader) error
 
 func (e *Entry) pipeFile(filename string, consumer fossilConsumer) error {
-	cmd := exec.Command("fossil.exe", "cat", filename, "-r", e.ID)
-	cmd.Dir = e.diary.directory
+	cmd := exec.Command("fossil.exe", "cat", filename, "-r", e.ID, "-R", e.diary.repo)
 
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
