@@ -8,6 +8,7 @@ import (
 type SaveGameInfo struct {
 	ID         string
 	Name       string `xml:"name"`
+	FarmName   string `xml:"farmName"`
 	Money      int    `xml:"money"`
 	DateString string `xml:"dateStringForSaveGame"`
 }

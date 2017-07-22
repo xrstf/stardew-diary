@@ -60,9 +60,11 @@ type SaveGame struct {
 	ID string
 
 	Player struct {
-		Money            int `xml:"money"`
-		ClubCoins        int `xml:"clubCoins"`
-		TotalMoneyEarned int `xml:"totalMoneyEarned"`
+		Name             string `xml:"name"`
+		FarmName         string `xml:"farmName"`
+		Money            int    `xml:"money"`
+		ClubCoins        int    `xml:"clubCoins"`
+		TotalMoneyEarned int    `xml:"totalMoneyEarned"`
 
 		FarmingLevel  int `xml:"farmingLevel"`
 		MiningLevel   int `xml:"miningLevel"`

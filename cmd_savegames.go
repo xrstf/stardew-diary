@@ -15,6 +15,7 @@ import (
 
 type savegameItem struct {
 	name   string
+	farm   string
 	id     string
 	status string
 }
@@ -68,6 +69,7 @@ func savegamesCommand(ctx *cli.Context) {
 		item := savegameItem{
 			id:     sg,
 			name:   info.Name,
+			farm:   info.FarmName,
 			status: "new",
 		}
 
@@ -90,6 +92,7 @@ func savegamesCommand(ctx *cli.Context) {
 			}
 
 			name := ""
+			farmName := ""
 
 			if latest != nil {
 				info, err := latest.SaveGameInfo()
@@ -97,12 +100,14 @@ func savegamesCommand(ctx *cli.Context) {
 					log.Fatal(err)
 				} else {
 					name = info.Name
+					farmName = info.FarmName
 				}
 			}
 
 			item := savegameItem{
 				id:     sg,
 				name:   name,
+				farm:   farmName,
 				status: "dead",
 			}
 
@@ -130,12 +135,12 @@ func savegamesCommand(ctx *cli.Context) {
 	for _, item := range flat {
 		switch item.status {
 		case "alive":
-			fmt.Printf("   - %s (%d)\n", item.name, item.UniqueID())
+			fmt.Printf("   - %s on the \"%s Farm\" (%d)\n", item.name, item.farm, item.UniqueID())
 		case "dead":
-			fmt.Printf("   - %s (%d) [dead]\n", item.name, item.UniqueID())
+			fmt.Printf("   - %s on the \"%s Farm\" (%d) [dead]\n", item.name, item.farm, item.UniqueID())
 			hasDead = item.UniqueID()
 		case "new":
-			fmt.Printf("   - %s (%d) [new]\n", item.name, item.UniqueID())
+			fmt.Printf("   - %s on the \"%s Farm\" (%d) [new]\n", item.name, item.farm, item.UniqueID())
 			hasNew = true
 		}
 	}
