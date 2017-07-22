@@ -74,13 +74,7 @@ savegame, you can just specify the **c**:
       Concerned's Diary
       =================
 
-    * [11] [1085e24b9d] 11th of Spring, Year 1 (2143 G)
-      [10] [674b39a802] 10th of Spring, Year 1 (272 G)
-      [09] [0682111624] 9th of Spring, Year 1 (1816 G)
-      [08] [c2cbc14269] 8th of Spring, Year 1 (1068 G)
-      [07] [206951a3e1] 7th of Spring, Year 1 (1023 G)
-      [06] [faec669912] 6th of Spring, Year 1 (808 G)
-      [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
+    * [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
       [04] [624d3e1724] 4th of Spring, Year 1 (1433 G)
       [03] [2ad2ffbd0e] 3rd of Spring, Year 1 (1054 G)
       [02] [0636f2a0b5] 2nd of Spring, Year 1 (674 G)
@@ -104,13 +98,7 @@ When you look at the output of the ``log`` command
       Concerned's Diary
       =================
 
-    * [11] [1085e24b9d] 11th of Spring, Year 1 (2143 G)
-      [10] [674b39a802] 10th of Spring, Year 1 (272 G)
-      [09] [0682111624] 9th of Spring, Year 1 (1816 G)
-      [08] [c2cbc14269] 8th of Spring, Year 1 (1068 G)
-      [07] [206951a3e1] 7th of Spring, Year 1 (1023 G)
-      [06] [faec669912] 6th of Spring, Year 1 (808 G)
-      [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
+    * [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
       [04] [624d3e1724] 4th of Spring, Year 1 (1433 G)
       [03] [2ad2ffbd0e] 3rd of Spring, Year 1 (1054 G)
       [02] [0636f2a0b5] 2nd of Spring, Year 1 (674 G)
@@ -130,11 +118,11 @@ identical to the days of month in the game is just coincidence.
 To revert to a different day, first **close the game**. Then, use the ``revert``
 command and supply the savegame (again, abbreviate as much as you like as long
 as it's unique) and the number right next to the asterisk. For example, to go
-back to the 7th of Spring, you'd type
+back to the 3rd of Spring, you'd type
 
-    stardew-diary.exe revert c 7
+    stardew-diary.exe revert c 3
 
-(Again: **7** because that's the number in brackets above (``[07]``), not
+(Again: **3** because that's the number in brackets above (``[03]``), not
 because it's the day of month!)
 
 After reverting, running ``log`` again shows this:
@@ -144,45 +132,60 @@ After reverting, running ``log`` again shows this:
       Concerned's Diary
       =================
 
-      [11] [1085e24b9d] 11th of Spring, Year 1 (2143 G)
-      [10] [674b39a802] 10th of Spring, Year 1 (272 G)
-      [09] [0682111624] 9th of Spring, Year 1 (1816 G)
-      [08] [c2cbc14269] 8th of Spring, Year 1 (1068 G)
-    * [07] [206951a3e1] 7th of Spring, Year 1 (1023 G)
-      [06] [faec669912] 6th of Spring, Year 1 (808 G)
       [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
       [04] [624d3e1724] 4th of Spring, Year 1 (1433 G)
-      [03] [2ad2ffbd0e] 3rd of Spring, Year 1 (1054 G)
+    * [03] [2ad2ffbd0e] 3rd of Spring, Year 1 (1054 G)
       [02] [0636f2a0b5] 2nd of Spring, Year 1 (674 G)
       [01] [208b80743e] 1st of Spring, Year 1 (500 G)
 
-You can now either start the game and play or revert at will to any other
-version of your savegame.
+You can move the asterisk to any day you like, but before you start the game
+again and play, make sure you understand what happens when you save. Read the
+following chapter carefully.
 
-**Important:** When you now play the game and save, you will "lose" all your
-newer versions. In the example above where we went back to version 7, saving
-would mean a *new* version 8 pops into existence and the old version 8 to 11
-would become inaccessible. You've basically forked the timeline for your
-savegame and Stardew Diary is -- for simplicity's sake -- only ever dealing with
-the current timeline. So after saving, your log output would look like this:
+#### Understanding What Goes On
+
+Think of your progression through the game as a graph, a series of savestates:
+
+![graph 1](http://i.imgur.com/sy1w9Iu.png)
+
+The last day has a thicker border because that's the current day of your
+savegame. In the ``log`` command, it's marked with an asterisk. When you reverted
+your savegame to day 3, you basically did this:
+
+![graph 2](http://i.imgur.com/RwXCp1r.png)
+
+You moved the marker, but all 5 versions of your game are still visible to
+Stardew Diary and you can move freely between all of them.
+
+When you now start the game, load your savegame and then *save*, this is what
+happens:
+
+![graph 3](http://i.imgur.com/kFp5BUz.png)
+
+You just split the timeline of your savegame into two branches. The old timeline,
+now drawn in grey, is no longer visible to Stardew Diary, **but it still exists
+in your backups**. For simplicity's sake, SD is only ever concerned (pun intended)
+with your current timeline. When you now run the ``log`` command, you will see
+that day 5 vanished and day 4 is the new day 4 (notice the different amounts of
+gold and the different random gibberish at the beginning of the line):
 
     stardew-diary.exe log c
 
       Concerned's Diary
       =================
 
-    * [08] [726d1ec98a] 8th of Spring, Year 1 (1507 G)
-      [07] [206951a3e1] 7th of Spring, Year 1 (1023 G)
-      [06] [faec669912] 6th of Spring, Year 1 (808 G)
-      [05] [0e3c12c127] 5th of Spring, Year 1 (383 G)
-      [04] [624d3e1724] 4th of Spring, Year 1 (1433 G)
+    * [04] [81db1ac8d0] 4th of Spring, Year 1 (2948 G)
       [03] [2ad2ffbd0e] 3rd of Spring, Year 1 (1054 G)
       [02] [0636f2a0b5] 2nd of Spring, Year 1 (674 G)
       [01] [208b80743e] 1st of Spring, Year 1 (500 G)
 
-No saved version is ever deleted, though: You can however still reach and restore
-**any** version that has ever been recorded, thanks to Fossil. It does require
-manual intervention and some doc reading on your end, though.
+As you continue to play and save, your new timeline grows as expected:
+
+![graph 4](http://i.imgur.com/INpVupB.png)
+
+You can however still reach and restore **any** version that has ever been
+recorded, thanks to Fossil. It does require manual intervention and some doc
+reading on your end, though.
 
 ### Diary Mode
 
