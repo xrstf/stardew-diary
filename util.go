@@ -87,7 +87,7 @@ func matchProfile(profile string, profiles []string) (string, error) {
 	if len(candidates) == 1 {
 		return candidates[0], nil
 	} else if len(candidates) > 1 {
-		return "", fmt.Errorf("The savegame name '%s' is ambiguous, could mean any of [%s].", profile, strings.Join(profiles, ", "))
+		return "", fmt.Errorf("The savegame name '%s' is ambiguous, could mean any of [%s].", profile, strings.Join(candidates, ", "))
 	}
 
 	return "", fmt.Errorf("Could not find a savegame called '%s'.", profile)
