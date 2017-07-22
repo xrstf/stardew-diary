@@ -4,6 +4,14 @@ This project aims to build a simple backup tool for [Stardew Valley](http://star
 savegames (currently limited/only tested on Windows). The backup mechanism makes
 use of [Fossil](http://fossil-scm.org/).
 
+* [Installation](#installation)
+* [Usage](#usage)
+  * [Creating Backups](#creating-backups)
+  * [Checking Backups](#checking-backups)
+  * [Reverting to a Previous Backup](#reverting-to-a-previous-backup)
+    * [Understanding What Goes On](#understanding-what-goes-on)
+  * [Diary Mode](#diary-mode)
+
 ## Installation
 
 Download the latest release from the Github Release pages and extract it anywhere
