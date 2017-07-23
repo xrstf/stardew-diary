@@ -42,6 +42,12 @@ func main() {
 			ArgsUsage: "SAVEGAME REVISION",
 		},
 		cli.Command{
+			Name:      "resurrect",
+			Usage:     "Restores a deleted savegame from backup.",
+			Action:    resurrectCommand,
+			ArgsUsage: "SAVEGAME_ID",
+		},
+		cli.Command{
 			Name:      "dump",
 			Usage:     "Dumps a given diary revision to disk for further debugging.",
 			Action:    dumpCommand,

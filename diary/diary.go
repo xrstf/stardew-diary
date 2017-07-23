@@ -40,6 +40,28 @@ func NewDiary(storageDirectory string, game *sdv.Game, saveGameID string) (*Diar
 	return diary, nil
 }
 
+func Resurrect(storageDirectory string, game *sdv.Game, saveGameID string) error {
+	repo := filepath.Join(storageDirectory, diaryFilename(saveGameID))
+	if _, err := os.Stat(repo); err != nil {
+		return fmt.Errorf("Could not find the repository file for a savegame named '%s'.", saveGameID)
+	}
+
+	// create the savegame directory
+	dir := game.SaveGameDirectory(saveGameID)
+	os.MkdirAll(dir, 0755)
+
+	// link it to the repository
+	diary := Diary{
+		saveGameID: saveGameID,
+		directory:  game.SaveGameDirectory(saveGameID),
+	}
+
+	diary.fossil("open", repo)
+	diary.createGameFiles()
+
+	return nil
+}
+
 func (d *Diary) LatestEntry() (*Entry, error) {
 	output, err := d.findEntries("1", true)
 	if err != nil {
@@ -207,6 +229,13 @@ func (d *Diary) Revert(entryID string) error {
 	}
 
 	// reconstruct the minified XML files that the game is actually using
+	d.createGameFiles()
+
+	return nil
+}
+
+func (d *Diary) createGameFiles() {
+	// reconstruct the minified XML files that the game is actually using
 	os.Chdir(d.directory)
 
 	for _, file := range d.files() {
@@ -216,8 +245,6 @@ func (d *Diary) Revert(entryID string) error {
 		xml.MinifyFile(pretty)
 		os.Rename(minified, file)
 	}
-
-	return nil
 }
 
 func (d *Diary) fossil(args ...string) (string, error) {

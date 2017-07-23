@@ -55,4 +55,6 @@ func revertCommand(ctx *cli.Context) {
 	if err := diary.Revert(entry.ID); err != nil {
 		log.Fatalln(err)
 	}
+
+	log.Printf("The savegame has been successfully reverted to revision %d.\n", revision)
 }
