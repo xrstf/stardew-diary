@@ -10,7 +10,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "stardew-diary"
 	app.Usage = "Keeps backups of your savegames."
-	app.Version = "1.0-dev"
+	app.Version = "1.0.1"
 
 	app.Commands = []cli.Command{
 		cli.Command{

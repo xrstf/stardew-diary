@@ -248,7 +248,9 @@ func (d *Diary) createGameFiles() {
 }
 
 func (d *Diary) fossil(args ...string) (string, error) {
-	c := exec.Command("fossil.exe", args...)
+	dir, _ := exeDirectory()
+
+	c := exec.Command(filepath.Join(dir, "fossil.exe"), args...)
 
 	if _, err := os.Stat(d.directory); err == nil {
 		c.Dir = d.directory
@@ -257,4 +259,39 @@ func (d *Diary) fossil(args ...string) (string, error) {
 	out, err := c.CombinedOutput()
 
 	return string(out), err
+}
+
+func exePath() (string, error) {
+	prog := os.Args[0]
+	p, err := filepath.Abs(prog)
+	if err != nil {
+		return "", err
+	}
+	fi, err := os.Stat(p)
+	if err == nil {
+		if !fi.Mode().IsDir() {
+			return p, nil
+		}
+		err = fmt.Errorf("%s is directory", p)
+	}
+	if filepath.Ext(p) == "" {
+		p += ".exe"
+		fi, err := os.Stat(p)
+		if err == nil {
+			if !fi.Mode().IsDir() {
+				return p, nil
+			}
+			err = fmt.Errorf("%s is directory", p)
+		}
+	}
+	return "", err
+}
+
+func exeDirectory() (string, error) {
+	p, err := exePath()
+	if err != nil {
+		return "", err
+	}
+
+	return filepath.Dir(p), nil
 }
