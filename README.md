@@ -16,8 +16,8 @@ use of [Fossil](http://fossil-scm.org/).
 
 ## Installation
 
-Download the latest release from the Github Release pages and extract it anywhere
-you like, for example ``C:\Users\you\stardew-diary``.
+Download the latest release from the [Github Release page](https://github.com/xrstf/stardew-diary/releases)
+and extract it anywhere you like, for example ``C:\Users\you\stardew-diary``.
 
 Stardew Diary has no graphical user interface, so you must use the Windows
 command prompt (or any other shell) to use it. Navigate to the directory where
