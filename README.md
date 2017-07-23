@@ -6,11 +6,13 @@ use of [Fossil](http://fossil-scm.org/).
 
 * [Installation](#installation)
 * [Usage](#usage)
+  * [Finding Savegames](#finding-savegames)
   * [Creating Backups](#creating-backups)
   * [Checking Backups](#checking-backups)
   * [Reverting to a Previous Backup](#reverting-to-a-previous-backup)
     * [Understanding What Goes On](#understanding-what-goes-on)
   * [Diary Mode](#diary-mode)
+  * [Restoring a Deleted Savegame](#restoring-a-deleted-savegame)
 
 ## Installation
 
@@ -50,6 +52,28 @@ backup repository for you. Backups are kept in the same folder where the
 ``stardew-diary.exe`` is placed, so that even when the game is deleted, all
 backups are still available.
 
+### Finding Savegames
+
+Run the ``savegames`` command to get a list of all known savegames. These
+include your current savegames as well as all backups of previous ones.
+
+    > stardew-diary.exe savegames
+
+      Savegames
+      =========
+
+       - Concerned on the "Star Trek Farm" (156295541) [new]
+       - Schotty on the "HSV Farm" (142210113)
+       - test on the "test Farm" (153507091) [dead]
+
+      New savegames will be processed when the `match` command is next used.
+      Dead savegames can be restored by running:
+
+        stardew-diary.exe resurrect 153507091
+
+Savegames can be new (have never been backed up), dead (deleted in the game
+but exist as backups) or normal (exists in the game and has backups).
+
 ### Creating Backups
 
 When playing the game, you will want to have the ``watch`` mode of SD running
@@ -77,7 +101,7 @@ For example, suppose you have three savegames: **Testerman_12345**,
 **Testerwoman_98765** and **Concerned_42069**. To get the logs for the **Concerned**
 savegame, you can just specify the **c**:
 
-    stardew-diary.exe log c
+    > stardew-diary.exe log c
 
       Concerned's Diary
       =================
@@ -94,14 +118,14 @@ To get the **Testerwoman** account, you would need to specify at least **testerw
 
 SD will tell you when it cannot uniquely identify the savegame:
 
-    stardew-diary.exe log t
+    > stardew-diary.exe log t
     2017/06/25 19:34:33 The savegame name 't' is ambiguous, could mean any of [Testerman_12345, Testerwoman_98765].
 
 ### Reverting to a Previous Backup
 
 When you look at the output of the ``log`` command
 
-    stardew-diary.exe log c
+    > stardew-diary.exe log c
 
       Concerned's Diary
       =================
@@ -135,7 +159,7 @@ because it's the day of month!)
 
 After reverting, running ``log`` again shows this:
 
-    stardew-diary.exe log c
+    > stardew-diary.exe log c
 
       Concerned's Diary
       =================
@@ -177,7 +201,7 @@ with your current timeline. When you now run the ``log`` command, you will see
 that day 5 vanished and day 4 is the new day 4 (notice the different amounts of
 gold and the different random gibberish at the beginning of the line):
 
-    stardew-diary.exe log c
+    > stardew-diary.exe log c
 
       Concerned's Diary
       =================
@@ -202,7 +226,7 @@ to each other and see the differences for each day. Because it knows where
 certain stuff (like levels, buildings, pets, ...) are stored, it can simulate
 a diary view for each savegame. Try it out by using the ``history`` command:
 
-    stardew-diary.exe history c
+    > stardew-diary.exe history c
 
       Concerned's Diary
       =================
@@ -263,3 +287,27 @@ a diary view for each savegame. Try it out by using the ``history`` command:
       10th of Spring, Year 1
 
        - I've reached Farming Level 2!
+
+### Restoring a Deleted Savegame
+
+When a savegame is deleted within the game, the backup file remains intact. You
+can get a list of all known savegames by running the ``savegames`` command:
+
+    > stardew-diary.exe savegames
+
+      Savegames
+      =========
+
+       - Concerned on the "Star Trek Farm" (156295541)
+       - Schotty on the "HSV Farm" (142210113)
+       - test on the "test Farm" (153507091) [dead]
+
+      Dead savegames can be restored by running:
+
+        stardew-diary.exe resurrect 153507091
+
+As you can see, we have a savegame that was deleted and can be restored. Do as
+SD tells you:
+
+    > stardew-diary.exe resurrect 153507091
+    The savegame test_153507091 has been successfully restored.
