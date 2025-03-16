@@ -1,4 +1,11 @@
-# Stardew Diary
+# Migration note
+
+> [!IMPORTANT]
+> Stardew Diary has been migrated to [codeberg.org/xrstf/stardew-diary](https://codeberg.org/xrstf/stardew-diary).
+
+---
+
+## Stardew Diary
 
 This project aims to build a simple backup tool for [Stardew Valley](http://stardewvalley.net/)
 savegames (currently limited/only tested on Windows). The backup mechanism makes
@@ -14,7 +21,7 @@ use of [Fossil](http://fossil-scm.org/).
   * [Diary Mode](#diary-mode)
   * [Restoring a Deleted Savegame](#restoring-a-deleted-savegame)
 
-## Installation
+### Installation
 
 Download the latest release from the [Github Release page](https://github.com/xrstf/stardew-diary/releases)
 and extract it anywhere you like, for example ``C:\Users\you\stardew-diary``.
@@ -45,7 +52,7 @@ you extracted the release and run the ``stardew-diary.exe``:
        --help, -h     show help
        --version, -v  print the version
 
-## Usage
+### Usage
 
 Stardew Diary automatically finds savegames and takes care of initializing the
 backup repository for you. Backups are kept in the same folder where the
@@ -74,7 +81,7 @@ include your current savegames as well as all backups of previous ones.
 Savegames can be new (have never been backed up), dead (deleted in the game
 but exist as backups) or normal (exists in the game and has backups).
 
-### Creating Backups
+#### Creating Backups
 
 When playing the game, you will want to have the ``watch`` mode of SD running
 in the background. Use your command prompt to run
@@ -87,7 +94,7 @@ at any time, just make sure it runs while you're playing.
 Everytime you save, the watcher will notice the changed savegame file and
 automatically create a backup for you.
 
-### Checking Backups
+#### Checking Backups
 
 You can see a list of all backups for a given savegame via
 
@@ -121,7 +128,7 @@ SD will tell you when it cannot uniquely identify the savegame:
     > stardew-diary.exe log t
     2017/06/25 19:34:33 The savegame name 't' is ambiguous, could mean any of [Testerman_12345, Testerwoman_98765].
 
-### Reverting to a Previous Backup
+#### Reverting to a Previous Backup
 
 When you look at the output of the ``log`` command
 
@@ -174,7 +181,7 @@ You can move the asterisk to any day you like, but before you start the game
 again and play, make sure you understand what happens when you save. Read the
 following chapter carefully.
 
-#### Understanding What Goes On
+##### Understanding What Goes On
 
 Think of your progression through the game as a graph, a series of savestates:
 
@@ -219,7 +226,7 @@ You can however still reach and restore **any** version that has ever been
 recorded, thanks to Fossil. It does require manual intervention and some doc
 reading on your end, though.
 
-### Diary Mode
+#### Diary Mode
 
 Because each backup contains all versions of a single savegame, SD can diff them
 to each other and see the differences for each day. Because it knows where
@@ -288,7 +295,7 @@ a diary view for each savegame. Try it out by using the ``history`` command:
 
        - I've reached Farming Level 2!
 
-### Restoring a Deleted Savegame
+#### Restoring a Deleted Savegame
 
 When a savegame is deleted within the game, the backup file remains intact. You
 can get a list of all known savegames by running the ``savegames`` command:
